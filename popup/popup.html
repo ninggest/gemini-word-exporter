@@ -12,6 +12,20 @@
         <h2>Gemini Word Exporter</h2>
 
         <div class="section">
+            <div class="input-group-row">
+                <div class="input-group">
+                    <label for="fontSelect">正文字体</label>
+                    <select id="fontSelect">
+                        <option value="仿宋">仿宋</option>
+                        <option value="宋体">宋体</option>
+                        <option value="微软雅黑">微软雅黑</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="fontSize">字号 (pt)</label>
+                    <input type="number" id="fontSize" min="8" max="72" value="16">
+                </div>
+            </div>
             <div class="input-group">
                 <label for="motto">格言 (页眉右侧)</label>
                 <input type="text" id="motto" placeholder="例如：全国优秀律师事务所">
@@ -28,6 +42,8 @@
         </div>
 
         <div class="footer">
+            <p class="author-info">作者: 广西万益律师事务所 Jus Team 的 Zane</p>
+            <p><a href="https://github.com/ninggest/gemini-word-exporter" target="_blank">GitHub 开源地址</a></p>
             <p>状态: <span id="status">就绪</span></p>
         </div>
     </div>

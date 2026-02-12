@@ -26,7 +26,7 @@ async function startExportProcess(content) {
     try {
         await setupOffscreenDocument();
 
-        const settings = await chrome.storage.local.get(['motto', 'address', 'phone']);
+        const settings = await chrome.storage.local.get(['motto', 'address', 'phone', 'font', 'fontSize']);
 
         chrome.runtime.sendMessage({
             action: 'generateWordOffscreen',

@@ -21,12 +21,21 @@ class DocxGenerator {
             ...BRAND_ASSETS,
             ...customBrand
         };
+
+        // Apply dynamic font settings
+        if (customBrand.font) {
+            this.assets.styles.font = customBrand.font;
+        }
+        if (customBrand.fontSize) {
+            // pt to half-points (e.g. 16pt = 32)
+            this.assets.styles.bodyFontSize = parseInt(customBrand.fontSize) * 2;
+        }
+
         // Robust detection of the docx library
         const globalDocx = (typeof window !== 'undefined' ? window.docx : null) || (typeof docx !== 'undefined' ? docx : null);
         this.docx = docxInstance || globalDocx;
 
-        console.log('DocxGenerator: Initialized with docx library (v4.0):', !!this.docx);
-        console.log('DocxGenerator: Using motto:', this.assets.firmMotto);
+        console.log('DocxGenerator: Initialized with dynamic styles:', this.assets.styles);
     }
 
     async generate(mdContent, logoBuffer = null) {

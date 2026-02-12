@@ -33,6 +33,8 @@ async function handleGenerateWord(rawContent, settings) {
         if (settings.motto) customBrand.firmMotto = settings.motto;
         if (settings.address) customBrand.address = settings.address;
         if (settings.phone) customBrand.phone = settings.phone;
+        if (settings.font) customBrand.font = settings.font;
+        if (settings.fontSize) customBrand.fontSize = settings.fontSize;
 
         // 2. 初始化生成器
         if (!window.DocxGenerator) {
