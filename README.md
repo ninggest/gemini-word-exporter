@@ -30,10 +30,10 @@
 
 ## 自定义 Logo
 
-为了保证导出文档的专业性，您可以替换自己的 Logo：
-1. 准备一张名为 `logo.png` 的图片。
-2. 将图片放入插件目录下的 `assets/` 文件夹内。
-3. 在 `chrome://extensions/` 页面点击刷新插件即可。
+您可以在插件设置中直接选择本地图片作为 Logo：
+1. 打开插件设置，点击“Logo 选择”上传图片。
+2. 保存设置后即可导出使用；未选择时默认使用广西万益律师事务所的 Logo。
+3. 如需恢复默认 Logo，清空设置或不选择图片即可。
 
 ## 作者
 
@@ -77,10 +77,10 @@ A Chrome extension for exporting Gemini chat content into professionally formatt
 
 ## Custom Logo
 
-To use your own branding:
-1. Prepare an image named `logo.png`.
-2. Place it in the `assets/` directory of the extension.
-3. Refresh the extension on the `chrome://extensions/` page.
+You can select a local image in the extension settings:
+1. Open the popup settings and choose a file under “Logo 选择”.
+2. Save settings to apply; if not selected, the default logo is used.
+3. To revert, clear the setting or leave the logo unselected.
 
 ## Author Info
 
