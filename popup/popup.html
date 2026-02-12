@@ -27,22 +27,29 @@
                 </div>
             </div>
             <div class="input-group">
-                <label for="motto">格言 (页眉右侧)</label>
-                <input type="text" id="motto" placeholder="例如：全国优秀律师事务所">
+                <label for="tableFontSize">表格字号 (pt)</label>
+                <input type="number" id="tableFontSize" min="8" max="72" value="12">
             </div>
             <div class="input-group">
-                <label for="address">地址 (页脚)</label>
-                <input type="text" id="address" placeholder="例如：某某市某某路-xx号">
+                <label for="logoFile">Logo 选择（如不选择 logo，则默认为广西万益律师事务所的 logo）</label>
+                <input type="file" id="logoFile" accept="image/*">
             </div>
             <div class="input-group">
-                <label for="phone">电话 (页脚)</label>
-                <input type="text" id="phone" placeholder="例如：0771-xxxxxxx">
+                <label for="motto">页眉右侧</label>
+                <input type="text" id="motto" placeholder="例如：全国优秀律师事务所 全国文明单位">
+            </div>
+            <div class="input-group">
+                <label for="address">页脚左侧</label>
+                <input type="text" id="address" placeholder="例如：地址：某某市某某路-xx号">
+            </div>
+            <div class="input-group">
+                <label for="phone">页脚右侧</label>
+                <input type="text" id="phone" placeholder="例如：电话：0771-xxxxxxx">
             </div>
             <button id="saveBtn" class="primary-btn">保存设置</button>
         </div>
 
         <div class="footer">
-            <p class="author-info">作者: 广西万益律师事务所 <a href="https://jus.team" target="_blank">Jus Team</a> 的 Zane</p>
             <p><a href="https://github.com/ninggest/gemini-word-exporter" target="_blank">GitHub 开源地址</a></p>
             <p>状态: <span id="status">就绪</span></p>
         </div>

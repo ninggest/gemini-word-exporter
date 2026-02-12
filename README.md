@@ -8,15 +8,18 @@
 - **专业格式化**：
   - 自动识别标题并加粗。
   - 智能处理 Markdown 格式（加粗、换行等）。
-  - 支持表格保留与占位符提示。
-- **品牌定制**：
-  - 尊享页眉设计：支持在插件设置中自定义律所/公司格言（Motto）。
-  - 规范页脚：支持自定义联系地址及电话。
-  - 样式自定义：支持选择字体（仿宋、宋体、微软雅黑）及设定字号。
-  - 标准 Logo：支持替换插件目录下的 `assets/logo.png`。
+  - 支持 Markdown 表格转 Word 表格。
+- **支持格式定制**：
+  - 页眉设计：支持在插件设置中自定义页眉右侧文案。
+  - 规范页脚：支持自定义页脚左侧与页脚右侧文案。
+  - 样式自定义：支持选择字体与正文、表格字号设定。
+  - Logo 选择：支持在设置中选择 Logo，未选择时使用默认 Logo。
   - 标准字体：默认使用“仿宋”字体，符合法律文书规范。
-- **高密度排版**：智能过滤单行回车，使文档排版更紧凑、专业。
-- **关于作者**：由 **[Jus Team](https://jus.team)** 的 Zane（广西万益律师事务所）开发。
+
+
+## 更新记录
+
+- **v1.5.0**：支持表格导出为 Word 表格；新增表格字号设置；设置中支持选择 Logo；优化标题自动加粗识别与首行缩进为 2ch；设置默认页眉/页脚文案。
 
 ## 安装说明
 
@@ -31,6 +34,10 @@
 1. 准备一张名为 `logo.png` 的图片。
 2. 将图片放入插件目录下的 `assets/` 文件夹内。
 3. 在 `chrome://extensions/` 页面点击刷新插件即可。
+
+## 作者
+
+由 **[Jus Team](https://jus.team)** 的 Zane开发。
 
 ## 技术栈
 
@@ -48,15 +55,18 @@ A Chrome extension for exporting Gemini chat content into professionally formatt
 - **Professional Formatting**:
   - Automatic title recognition and bolding.
   - Intelligent Markdown parsing (bold, line breaks, etc.).
-  - Table support with placeholder warnings.
-- **Branding Customization**:
-  - Premium Header: Customize Firm/Company Motto in extension settings.
-  - Standard Footer: Customize Address and Phone contact information in extension settings.
-  - Style Selection: Choose fonts (FangSong, SimSun, Microsoft YaHei) and set font sizes.
-  - Custom Logo: Replace `assets/logo.png` with your own branding.
+  - Markdown tables render as Word tables.
+- **Support Format Customization**:
+  - Premium Header: Customize header-right text in extension settings.
+  - Standard Footer: Customize footer-left and footer-right text in extension settings.
+  - Style Selection: Choose fonts and set body/table font sizes.
+  - Custom Logo: Select a logo in settings (falls back to default).
   - Standard Typography: Default "FangSong" font for legal/official standards.
-- **High-Density Layout**: Smart filtering of extra line breaks for a compact, professional look.
-- **Author Info**: Developed by Zane from **[Jus Team](https://jus.team)** (Guangxi Wanyi Law Firm).
+
+
+## Changelog
+
+- **v1.5.0**: Word table export; table font size setting; logo selection in settings; improved auto-title bolding; first-line indent set to 2ch; default header/footer texts.
 
 ## Installation
 
@@ -72,6 +82,10 @@ To use your own branding:
 2. Place it in the `assets/` directory of the extension.
 3. Refresh the extension on the `chrome://extensions/` page.
 
+## Author Info
+
+Developed by Zane from **[Jus Team](https://jus.team)** .
+
 ## License
 
-MIT License
+MIT License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

@@ -23,7 +23,10 @@ function extractMarkdown(container) {
             } else if (el.tagName === 'PRE') {
                 text += "```\n" + el.innerText + "\n```\n\n";
             } else if (el.tagName === 'TABLE') {
-                text += "| 表格占位符 |\n| --- |\n| [此处需手工插入表格] |\n\n";
+                const tableMarkdown = tableToMarkdown(el);
+                if (tableMarkdown) {
+                    text += tableMarkdown + "\n\n";
+                }
             }
         });
     } else {
@@ -32,6 +35,39 @@ function extractMarkdown(container) {
     }
 
     return text.trim();
+}
+
+function tableToMarkdown(table) {
+    const rows = Array.from(table.querySelectorAll('tr'));
+    if (rows.length === 0) return "";
+
+    const parsedRows = rows.map(row => {
+        const cells = Array.from(row.children).filter(cell => cell.tagName === 'TD' || cell.tagName === 'TH');
+        const expanded = [];
+        cells.forEach(cell => {
+            const text = cell.innerText.replace(/\n+/g, ' ').trim();
+            const span = Math.max(1, parseInt(cell.getAttribute('colspan') || '1', 10));
+            expanded.push(text);
+            for (let i = 1; i < span; i++) {
+                expanded.push("");
+            }
+        });
+        return expanded;
+    });
+
+    const columnCount = Math.max(...parsedRows.map(row => row.length));
+    if (!Number.isFinite(columnCount) || columnCount === 0) return "";
+
+    const normalizedRows = parsedRows.map(row => {
+        const padded = row.slice();
+        while (padded.length < columnCount) padded.push("");
+        return padded;
+    });
+
+    const lines = normalizedRows.map(row => `| ${row.join(' | ')} |`);
+    const separator = `| ${new Array(columnCount).fill('---').join(' | ')} |`;
+    lines.splice(1, 0, separator);
+    return lines.join("\n");
 }
 
 function injectExportButtons() {

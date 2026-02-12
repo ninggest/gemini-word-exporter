@@ -12,29 +12,36 @@ async function handleGenerateWord(rawContent, settings) {
     try {
         console.log('Offscreen: Starting Brand-Specific Word generation (v2.0)');
 
-        // Fetch logo as ArrayBuffer
         let logoBuffer = null;
-        try {
-            const logoUrl = chrome.runtime.getURL('assets/logo.png');
-            console.log('Offscreen: Attempting to fetch logo from:', logoUrl);
-            const response = await fetch(logoUrl);
-            if (response.ok) {
-                logoBuffer = await response.arrayBuffer();
-                console.log('Offscreen: Logo loaded successfully, size:', logoBuffer.byteLength);
-            } else {
-                console.warn('Offscreen: Logo file not found or failed to load, status:', response.status);
+        const logoSources = [];
+        if (settings.logoDataUrl) {
+            logoSources.push(settings.logoDataUrl);
+        }
+        logoSources.push(chrome.runtime.getURL('assets/logo.png'));
+
+        for (const logoUrl of logoSources) {
+            try {
+                console.log('Offscreen: Attempting to fetch logo from:', logoUrl);
+                const response = await fetch(logoUrl);
+                if (response.ok) {
+                    logoBuffer = await response.arrayBuffer();
+                    console.log('Offscreen: Logo loaded successfully, size:', logoBuffer.byteLength);
+                    break;
+                } else {
+                    console.warn('Offscreen: Logo file not found or failed to load, status:', response.status);
+                }
+            } catch (e) {
+                console.error('Offscreen: Failed to load logo from assets:', e);
             }
-        } catch (e) {
-            console.error('Offscreen: Failed to load logo from assets:', e);
         }
 
-        // 1. 处理品牌设置 (来自 service-worker 的 message)
         const customBrand = {};
         if (settings.motto) customBrand.firmMotto = settings.motto;
         if (settings.address) customBrand.address = settings.address;
         if (settings.phone) customBrand.phone = settings.phone;
         if (settings.font) customBrand.font = settings.font;
         if (settings.fontSize) customBrand.fontSize = settings.fontSize;
+        if (settings.tableFontSize) customBrand.tableFontSize = settings.tableFontSize;
 
         // 2. 初始化生成器
         if (!window.DocxGenerator) {
