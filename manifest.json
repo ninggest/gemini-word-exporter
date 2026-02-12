@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "Gemini Word Exporter",
+    "version": "1.2.0",
+    "description": "Export Gemini AI responses to Word documents using templates.",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting",
+        "downloads",
+        "offscreen"
+    ],
+    "host_permissions": [
+        "https://gemini.google.com/*"
+    ],
+    "background": {
+        "service_worker": "background/service-worker.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://gemini.google.com/*"
+            ],
+            "js": [
+                "content/content.js"
+            ],
+            "css": [
+                "content/content.css"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup/popup.html"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "libs/*.js",
+                "templates/default-template.js"
+            ],
+            "matches": [
+                "https://gemini.google.com/*"
+            ]
+        }
+    ]
+}

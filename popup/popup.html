@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini Word Exporter</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Gemini Word Exporter</h2>
+
+        <div class="section">
+            <label class="switch-container">
+                <input type="checkbox" id="useCustom">
+                <span class="slider"></span>
+                使用自定义模板 (.dotx)
+            </label>
+        </div>
+
+        <div class="section" id="uploadSection">
+            <p class="hint">未上传自定义模板</p>
+            <input type="file" id="templateInput" accept=".dotx" style="display: none;">
+            <button id="uploadBtn" class="primary-btn">上传模板</button>
+        </div>
+
+        <div class="footer">
+            <p>状态: <span id="status">就绪</span></p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
