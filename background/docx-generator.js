@@ -16,13 +16,17 @@ const BRAND_ASSETS = {
 };
 
 class DocxGenerator {
-    constructor(docxInstance) {
-        this.assets = BRAND_ASSETS;
+    constructor(docxInstance, customBrand = {}) {
+        this.assets = {
+            ...BRAND_ASSETS,
+            ...customBrand
+        };
         // Robust detection of the docx library
         const globalDocx = (typeof window !== 'undefined' ? window.docx : null) || (typeof docx !== 'undefined' ? docx : null);
         this.docx = docxInstance || globalDocx;
 
         console.log('DocxGenerator: Initialized with docx library (v4.0):', !!this.docx);
+        console.log('DocxGenerator: Using motto:', this.assets.firmMotto);
     }
 
     async generate(mdContent, logoBuffer = null) {

@@ -26,9 +26,12 @@ async function startExportProcess(content) {
     try {
         await setupOffscreenDocument();
 
+        const settings = await chrome.storage.local.get(['motto', 'address', 'phone']);
+
         chrome.runtime.sendMessage({
             action: 'generateWordOffscreen',
-            content: content
+            content: content,
+            settings: settings
         });
     } catch (error) {
         console.error('SW Export Failed:', error);

@@ -10,8 +10,9 @@
   - 智能处理 Markdown 格式（加粗、换行等）。
   - 支持表格保留与占位符提示。
 - **品牌定制**：
-  - 尊享页眉设计：包含律所/公司 Logo 与格言（Motto）。
-  - 规范页脚：包含联系地址及电话。
+  - 尊享页眉设计：支持在插件设置中自定义律所/公司格言（Motto）。
+  - 规范页脚：支持自定义联系地址及电话。
+  - 标准 Logo：支持替换插件目录下的 `assets/logo.png`。
   - 标准字体：默认使用“仿宋”字体，符合法律文书规范。
 - **高密度排版**：智能过滤单行回车，使文档排版更紧凑、专业。
 
@@ -47,8 +48,9 @@ A Chrome extension for exporting Gemini chat content into professionally formatt
   - Intelligent Markdown parsing (bold, line breaks, etc.).
   - Table support with placeholder warnings.
 - **Branding Customization**:
-  - Premium Header: Includes Firm/Company Logo and Motto.
-  - Standard Footer: Address and phone contact information.
+  - Premium Header: Customize Firm/Company Motto in extension settings.
+  - Standard Footer: Customize Address and Phone contact information in extension settings.
+  - Custom Logo: Replace `assets/logo.png` with your own branding.
   - Standard Typography: Default "FangSong" font for legal/official standards.
 - **High-Density Layout**: Smart filtering of extra line breaks for a compact, professional look.
 

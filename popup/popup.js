@@ -1,46 +1,27 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const useCustomCheckbox = document.getElementById('useCustom');
-    const uploadBtn = document.getElementById('uploadBtn');
-    const templateInput = document.getElementById('templateInput');
+    const mottoInput = document.getElementById('motto');
+    const addressInput = document.getElementById('address');
+    const phoneInput = document.getElementById('phone');
+    const saveBtn = document.getElementById('saveBtn');
     const statusSpan = document.getElementById('status');
-    const hintP = document.querySelector('.hint');
 
-    // 初始化状态
-    const data = await chrome.storage.local.get(['useCustom', 'customTemplateName']);
-    useCustomCheckbox.checked = !!data.useCustom;
-    if (data.customTemplateName) {
-        hintP.innerText = `当前模板: ${data.customTemplateName}`;
-    }
+    // 初始化状态 (获取保存的设置或使用默认值)
+    const data = await chrome.storage.local.get(['motto', 'address', 'phone']);
 
-    // 切换自定义模板
-    useCustomCheckbox.onchange = () => {
-        chrome.storage.local.set({ useCustom: useCustomCheckbox.checked });
-    };
+    // 这里的默认值应与 docx-generator.js 中的 BRAND_ASSETS 一致或稍后由 generator 处理
+    mottoInput.value = data.motto || "";
+    addressInput.value = data.address || "";
+    phoneInput.value = data.phone || "";
 
-    // 触发文件选择
-    uploadBtn.onclick = () => {
-        templateInput.click();
-    };
-
-    // 处理文件上传
-    templateInput.onchange = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const base64 = event.target.result.split(',')[1];
-            chrome.storage.local.set({
-                customTemplate: base64,
-                customTemplateName: file.name,
-                useCustom: true
-            }, () => {
-                useCustomCheckbox.checked = true;
-                hintP.innerText = `当前模板: ${file.name}`;
-                statusSpan.innerText = '已上传';
-                setTimeout(() => statusSpan.innerText = '就绪', 2000);
-            });
-        };
-        reader.readAsDataURL(file);
+    // 保存设置
+    saveBtn.onclick = () => {
+        chrome.storage.local.set({
+            motto: mottoInput.value.trim(),
+            address: addressInput.value.trim(),
+            phone: phoneInput.value.trim()
+        }, () => {
+            statusSpan.innerText = '已保存';
+            setTimeout(() => statusSpan.innerText = '就绪', 2000);
+        });
     };
 });

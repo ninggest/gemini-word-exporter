@@ -4,11 +4,11 @@ console.log('Offscreen: Document loaded (v2.0)');
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'generateWordOffscreen') {
-        handleGenerateWord(request.content);
+        handleGenerateWord(request.content, request.settings || {});
     }
 });
 
-async function handleGenerateWord(rawContent) {
+async function handleGenerateWord(rawContent, settings) {
     try {
         console.log('Offscreen: Starting Brand-Specific Word generation (v2.0)');
 
@@ -28,14 +28,18 @@ async function handleGenerateWord(rawContent) {
             console.error('Offscreen: Failed to load logo from assets:', e);
         }
 
-        // 1. 初始化生成器
+        // 1. 处理品牌设置 (来自 service-worker 的 message)
+        const customBrand = {};
+        if (settings.motto) customBrand.firmMotto = settings.motto;
+        if (settings.address) customBrand.address = settings.address;
+        if (settings.phone) customBrand.phone = settings.phone;
+
+        // 2. 初始化生成器
         if (!window.DocxGenerator) {
             throw new Error('DocxGenerator not found. Check if scripts are loaded correctly.');
         }
 
-        console.log('Offscreen: window.docx availability:', !!window.docx);
-        console.log('Offscreen: window.DocxGenerator availability:', !!window.DocxGenerator);
-        const generator = new window.DocxGenerator(window.docx);
+        const generator = new window.DocxGenerator(window.docx, customBrand);
 
         // 2. 生成 Blob (包含品牌页眉页脚和样式)
         const blob = await generator.generate(rawContent, logoBuffer);

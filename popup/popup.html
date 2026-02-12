@@ -12,17 +12,19 @@
         <h2>Gemini Word Exporter</h2>
 
         <div class="section">
-            <label class="switch-container">
-                <input type="checkbox" id="useCustom">
-                <span class="slider"></span>
-                使用自定义模板 (.dotx)
-            </label>
-        </div>
-
-        <div class="section" id="uploadSection">
-            <p class="hint">未上传自定义模板</p>
-            <input type="file" id="templateInput" accept=".dotx" style="display: none;">
-            <button id="uploadBtn" class="primary-btn">上传模板</button>
+            <div class="input-group">
+                <label for="motto">格言 (页眉右侧)</label>
+                <input type="text" id="motto" placeholder="例如：全国优秀律师事务所">
+            </div>
+            <div class="input-group">
+                <label for="address">地址 (页脚)</label>
+                <input type="text" id="address" placeholder="例如：某某市某某路-xx号">
+            </div>
+            <div class="input-group">
+                <label for="phone">电话 (页脚)</label>
+                <input type="text" id="phone" placeholder="例如：0771-xxxxxxx">
+            </div>
+            <button id="saveBtn" class="primary-btn">保存设置</button>
         </div>
 
         <div class="footer">
