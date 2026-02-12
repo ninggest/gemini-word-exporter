@@ -16,7 +16,7 @@
   - 标准 Logo：支持替换插件目录下的 `assets/logo.png`。
   - 标准字体：默认使用“仿宋”字体，符合法律文书规范。
 - **高密度排版**：智能过滤单行回车，使文档排版更紧凑、专业。
-- **关于作者**：插件集成作者信息及 GitHub 开源地址。
+- **关于作者**：由 **[Jus Team](https://jus.team)** 的 Zane（广西万益律师事务所）开发。
 
 ## 安装说明
 
@@ -56,7 +56,7 @@ A Chrome extension for exporting Gemini chat content into professionally formatt
   - Custom Logo: Replace `assets/logo.png` with your own branding.
   - Standard Typography: Default "FangSong" font for legal/official standards.
 - **High-Density Layout**: Smart filtering of extra line breaks for a compact, professional look.
-- **Author Info**: Built-in author credits and GitHub source link.
+- **Author Info**: Developed by Zane from **[Jus Team](https://jus.team)** (Guangxi Wanyi Law Firm).
 
 ## Installation
 
