@@ -19,6 +19,7 @@
 
 ## 更新记录
 
+- **v1.6.0**：修复了列表内容（有序/无序列表）导出时出现重复的 Bug；优化了列表抓取逻辑，支持正确识别有序列表序号。
 - **v1.5.0**：支持表格导出为 Word 表格；新增表格字号设置；设置中支持选择 Logo；优化标题自动加粗识别与首行缩进为 2ch；设置默认页眉/页脚文案。
 
 ## 安装说明
@@ -66,6 +67,7 @@ A Chrome extension for exporting Gemini chat content into professionally formatt
 
 ## Changelog
 
+- **v1.6.0**: Fixed a bug where list items (ordered/unordered) were duplicated during export; optimized list extraction logic to correctly identify ordered list numbering.
 - **v1.5.0**: Word table export; table font size setting; logo selection in settings; improved auto-title bolding; first-line indent set to 2ch; default header/footer texts.
 
 ## Installation

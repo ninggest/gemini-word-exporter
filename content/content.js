@@ -17,9 +17,20 @@ function extractMarkdown(container) {
     if (items.length > 0) {
         items.forEach(el => {
             if (el.tagName === 'P' || el.tagName.startsWith('H')) {
+                if (el.closest('li')) return;
                 text += el.innerText + "\n\n";
             } else if (el.tagName === 'LI') {
-                text += "- " + el.innerText + "\n";
+                const parentList = el.parentElement;
+                let prefix = "- ";
+                if (parentList && parentList.tagName === 'OL') {
+                    const siblings = Array.from(parentList.children).filter(child => child.tagName === 'LI');
+                    const index = siblings.indexOf(el);
+                    prefix = `${index + 1}. `;
+                }
+                const cloned = el.cloneNode(true);
+                const nestedLists = cloned.querySelectorAll('ul, ol');
+                nestedLists.forEach(list => list.remove());
+                text += prefix + cloned.innerText + "\n";
             } else if (el.tagName === 'PRE') {
                 text += "```\n" + el.innerText + "\n```\n\n";
             } else if (el.tagName === 'TABLE') {
