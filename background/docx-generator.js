@@ -11,7 +11,7 @@ const BRAND_ASSETS = {
         bodyFontSize: 32, // 16pt = 32 half-points
         tableFontSize: 24,
         headerFontSize: 18,
-        footerFontSize: 15,
+        footerFontSize: 20,
         lineSpacing: 360,
     }
 };
@@ -103,7 +103,7 @@ class DocxGenerator {
                                 alignment: AlignmentType.CENTER,
                                 children: [
                                     new TextRun({
-                                        children: [PageNumber.CURRENT],
+                                        children: [PageNumber.CURRENT, " / ", PageNumber.TOTAL_PAGES],
                                         size: styles.footerFontSize,
                                     }),
                                 ],
@@ -173,7 +173,8 @@ class DocxGenerator {
             }
 
             const titlePattern = /^(\s*)(第[一二三四五六七八九十百千万\d]+[章节条款]|[一二三四五六七八九十百\d]+[、\.．\)]|[（\(\uff08{［\[\u3010][一二三四五六七八九十百千万\d]+[）\)\uff09}］\]\u3011])(\s*)/;
-            const isAutoTitle = titlePattern.test(trimmed);
+            // Only bold if length <= 80 chars (avoid bolding long paragraphs that start with numbers)
+            const isAutoTitle = titlePattern.test(trimmed) && trimmed.length <= 80;
 
             children.push(new Paragraph({
                 children: this.parseInlineStyles(line, isAutoTitle),
